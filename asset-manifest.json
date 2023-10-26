@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/github.io/shop/static/css/main.fdb60868.css",
+    "main.js": "/github.io/shop/static/js/main.e8490d23.js",
+    "index.html": "/github.io/shop/index.html",
+    "main.fdb60868.css.map": "/github.io/shop/static/css/main.fdb60868.css.map",
+    "main.e8490d23.js.map": "/github.io/shop/static/js/main.e8490d23.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fdb60868.css",
+    "static/js/main.e8490d23.js"
+  ]
+}
