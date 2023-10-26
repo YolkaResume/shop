@@ -1,0 +1,30 @@
+.menu{
+    position: fixed;
+    right: 0;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.buyBtn{
+  width: 100%;
+}
+.cartBtn{
+  z-index: 4;
+}
+.basketOpen {
+    opacity: 0.95;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #282c34;
+  }
+  
+  .basketClosed {
+    display: none;
+  }
+  

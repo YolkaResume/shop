@@ -1,0 +1,28 @@
+.article{
+    background-color: #415A77;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: auto;
+    height: 300px;
+    width: 300px;
+}
+.buttons{
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons button{
+    border: #415A77;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: 600;
+    height: 40px;
+    width: 40px;
+}
+
+.title{
+    margin: 5px auto;
+}
