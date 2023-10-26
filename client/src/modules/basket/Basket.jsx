@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import styles from './styles.module.css';
+import { useSelector } from 'react-redux';
 
-export default function Basket({ cart }) {
+export default function Basket() {
+  const cart = useSelector((state) => state.cart);
   const [isBasketOpen, setIsBasketOpen] = useState(false);
 
   const cartItems = Object.values(cart);
