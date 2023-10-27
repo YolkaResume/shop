@@ -6,9 +6,27 @@ import App from './App';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 
+import {
+    createBrowserRouter,
+    RouterProvider,
+  } from "react-router-dom";
+import Admin from './admin/Admin';
+  
+  
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <App></App>,
+    },
+    {
+        path:"/admin",
+        element:<Admin></Admin>
+    }
+  ]);
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <Provider store={store}>
-        <App />
+         <RouterProvider router={router} />
     </Provider>
 );

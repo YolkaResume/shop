@@ -1,0 +1,13 @@
+.TabItem{
+    display: flex;
+
+}
+
+.TabItem div{
+    margin: 10px;
+}
+
+Table{
+    display: flex;
+    flex-direction: column;
+}

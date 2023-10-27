@@ -1,6 +1,7 @@
 const initialState = {
     cart: {},
     articles: [],
+    admin:false,
   };
   
   const reducer = (state = initialState, action) => {
@@ -68,6 +69,12 @@ const initialState = {
           articles: updatedArticlesRemove,
         };
   
+        case 'ADMIN_CHECK':
+          return{
+            ...state,
+            admin:true,
+          }
+
       default:
         return state;
     }

@@ -21,6 +21,11 @@
     font-weight: 600;
     height: 40px;
     width: 40px;
+    cursor: pointer;
+}
+
+.buttons button:active{
+    background-color: #182a3e;
 }
 
 .title{
