@@ -7,8 +7,8 @@ export default function ArticleTable({articles}) {
     <div className={styles.Table}>
       {articles.map((article)=>{
             return(
-                <div>
-                <div className={styles.TabItem}>
+                <div key={article.id}>
+                <div  className={styles.TabItem}>
                     <div>
                         Name: {article.name}
                     </div>
