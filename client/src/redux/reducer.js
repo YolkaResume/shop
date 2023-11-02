@@ -73,8 +73,7 @@ const initialState = {
           return{
             ...state,
             admin:true,
-          }
-
+          }  
       default:
         return state;
     }

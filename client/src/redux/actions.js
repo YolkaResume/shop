@@ -19,7 +19,7 @@ export const addToCart = (article) => {
   export const loadArticles = () => {
     return async (dispatch) => {
       try {
-        const response = await axios.get(`${phphost}/api/products`); // Замените на ваш реальный URL для получения товаров
+        const response = await axios.get(`${phphost}/api/products`);
         const articles = response.data;
         dispatch({ type: 'LOAD_ARTICLES', articles });
       } catch (error) {
@@ -27,6 +27,17 @@ export const addToCart = (article) => {
       }
     };
   };
+
+  export const saveArticle = (name, price, amount) =>{
+      console.log(name,price,amount);
+      axios.post(`${phphost}/api/save/article`, { name, price, amount }).
+      then((response)=>{
+        console.log(` data: ${response.data.ok}\n status: ${response.status}`)
+      }).
+      catch((error)=>{
+        console.log(error)
+      })
+  }
 
   export const updateArticles = (articles) => ({
     type: 'UPDATE_ARTICLES',
