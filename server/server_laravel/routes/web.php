@@ -18,4 +18,4 @@ Route::get('/', function () {
 });
 
 Route::get('/api/products', [ProductController::class,'index']);
-Route::post('/api/save/article', [ProductController::class,'save']);
+Route::post('/api/add/article', [ProductController::class,'add']);

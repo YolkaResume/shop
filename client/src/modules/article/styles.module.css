@@ -1,10 +1,13 @@
 .article{
-    background-color: #415A77;
+    background-color: #DDA77B;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin: auto;
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
     height: 300px;
     width: 300px;
 }

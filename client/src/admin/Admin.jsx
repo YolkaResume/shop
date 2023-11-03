@@ -8,6 +8,7 @@ import TabList from "@mui/joy/TabList";
 import Tab from "@mui/joy/Tab";
 import TabPanel from "@mui/joy/TabPanel";
 import ArticleTable from "./ArticleTable/ArticleTable";
+import AddArticle from "./AdminArticle/AddArticle";
 
 export default function Admin() {
   const admin = useSelector((state) => state.admin);
@@ -28,7 +29,7 @@ export default function Admin() {
       <div className={styles.Title}>Admin Panel</div>
       <Tabs aria-label="Basic tabs" defaultValue={0}>
         <TabList>
-          <Tab>First tab</Tab>
+          <Tab>Articles</Tab>
           <Tab>Second tab</Tab>
           <Tab>Third tab</Tab>
         </TabList>
@@ -36,7 +37,7 @@ export default function Admin() {
           <ArticleTable articles={articles} />
         </TabPanel>
         <TabPanel value={1}>
-          <b>Second</b> tab panel
+          <AddArticle article={{name:"add",price:0,amount:0}}></AddArticle>
         </TabPanel>
         <TabPanel value={2}>
           <b>Third</b> tab panel

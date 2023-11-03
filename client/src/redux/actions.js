@@ -32,11 +32,29 @@ export const addToCart = (article) => {
       console.log(name,price,amount);
       axios.post(`${phphost}/api/save/article`, { name, price, amount }).
       then((response)=>{
-        console.log(` data: ${response.data.ok}\n status: ${response.status}`)
+        console.log(` ok?: ${response.data.ok}\n status: ${response.status}`)
       }).
       catch((error)=>{
         console.log(error)
       })
+  }
+
+  export const addArticle = (name, price, amount, photo) => {
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('price', price);
+    formData.append('amount', amount);
+    formData.append('photo', photo);
+  
+    axios.post(`${phphost}/api/add/article`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    }).then((response) => {
+      console.log(response);
+    }).catch((error)=>{
+      console.log(error)
+    });
   }
 
   export const updateArticles = (articles) => ({

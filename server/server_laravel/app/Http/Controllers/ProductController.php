@@ -15,20 +15,24 @@ class ProductController extends Controller
         return response()->json($products); 
     }
 
-    public function save(Request $request)
-    {
-        $name = $request->input('name');
-    $price = $request->input('price');
-    $amount = $request->input('amount');
+    public function add(Request $request)
+{
+    $product = new Product();
+    $product->name = $request->input('name');
+    $product->price = $request->input('price');
+    $product->amount = $request->input('amount');
+    $product->photo = $request->input('photo');
+    $product->category_id = 1;
 
-    // Ваш код сохранения данных
+    $product->save();
 
-    // Верните данные, которые вы хотите вернуть в ответе
     return response()->json([
-        'name' => $name,
-        'price' => $price,
-        'amount' => $amount,
-        'ok'=>"true",
+        "name" => $product->name,
+        "price" => $product->price,
+        "amount" => $product->amount,
+        "photo" => $product->photo,
     ]);
-    }
+}
+
+    
 }
