@@ -2,17 +2,25 @@ import React, { useState } from 'react';
 import Divider from "@mui/joy/Divider";
 import { addArticle } from "../../redux/actions";
 
-export default function AddArticle({ article }) {
+import styles from "./styles.module.css"
+
+export default function AddArticle({ article, categories }) {
   const [name, setName] = useState(article.name);
   const [price, setPrice] = useState(article.price);
   const [amount, setAmount] = useState(article.amount);
+  const [categoryID, setCategoryID] = useState(categories[0].id);
   const [photo, setPhoto] = useState(new Blob());
 
   const handleAdd = (e) => {
     e.preventDefault(); // Остановить стандартное поведение формы
-    console.log(name, price, amount, photo);
-    addArticle(name, price, amount, photo);
+    console.log(name, price, amount, photo, categoryID);
+    addArticle(name, price, amount, photo, categoryID);
   }
+
+  const handleCategoryChange = (event) => {
+    const newCategoryID = event.target.value;
+    setCategoryID(newCategoryID);
+  };
 
   const handlePhotoChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -21,7 +29,7 @@ export default function AddArticle({ article }) {
 
   return (
     <form key={article.id} onSubmit={handleAdd}>
-      <div>
+      <div className={styles.article}>
         <label htmlFor="name">Name</label>
         <input
           onChange={(e) => setName(e.target.value)}
@@ -46,6 +54,13 @@ export default function AddArticle({ article }) {
           value={amount}
         />
 
+        <label htmlFor="category">Category</label>
+        <select onChange={handleCategoryChange} name="category" >
+          {categories.map((item)=>{
+            return(<option key={item.id} value={item.id}>{item.name}</option>)
+          })}
+        </select>
+
         <label htmlFor="photo">Photo</label>
         <input
           type='file'
@@ -53,7 +68,7 @@ export default function AddArticle({ article }) {
           onChange={handlePhotoChange}
         />
 
-        <button type="submit">Save</button>
+        <button type="submit">Add</button>
       </div>
 
       <Divider

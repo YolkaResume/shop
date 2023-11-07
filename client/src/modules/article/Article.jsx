@@ -19,6 +19,7 @@ export default function Article({ article }) {
 
   return (
     <div className={styles.article}>
+      <img src={`data:image/jpeg;base64,${article.photo}`} alt="Article" />
       <span className={styles.title}>{article.name}</span>
       <span className={styles.title}>{articlesItem.quantity ? articlesItem.quantity : 0}</span>
       <div className={styles.buttons}>

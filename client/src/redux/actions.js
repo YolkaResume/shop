@@ -28,6 +28,18 @@ export const addToCart = (article) => {
     };
   };
 
+  export const loadCategories = () => {
+    return async (dispatch) => {
+      try {
+        const response = await axios.get(`${phphost}/api/categories`);
+        const categories = response.data;
+        dispatch({ type: 'SET_CATEGORIES', categories });
+      } catch (error) {
+        
+      }
+    };
+  };
+
   export const saveArticle = (name, price, amount) =>{
       console.log(name,price,amount);
       axios.post(`${phphost}/api/save/article`, { name, price, amount }).
@@ -39,11 +51,22 @@ export const addToCart = (article) => {
       })
   }
 
-  export const addArticle = (name, price, amount, photo) => {
+  export const addNewCategory = (name) => {
+    axios.post(`${phphost}/api/add/category`, { name: name })
+      .then((response) => {
+        console.log(response.data); // Добавьте обработку успешного ответа
+      })
+      .catch((error) => {
+        console.log(error); // Обработка ошибок
+      });
+  }
+
+  export const addArticle = (name, price, amount, photo, category) => {
     const formData = new FormData();
     formData.append('name', name);
     formData.append('price', price);
     formData.append('amount', amount);
+    formData.append('category', category);
     formData.append('photo', photo);  // Directly append the file
   
     axios.post(`${phphost}/api/add/article`, formData, {

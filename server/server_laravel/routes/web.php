@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +20,7 @@ Route::get('/', function () {
 });
 
 Route::get('/api/products', [ProductController::class,'index']);
+Route::get('/api/categories', [CategoryController::class,'index']);
 Route::post('/api/add/article', [ProductController::class,'add']);
+Route::post('/api/add/category', [CategoryController::class,'add']);
 Route::post('/api/login/admin', [AdminController::class,'login']);

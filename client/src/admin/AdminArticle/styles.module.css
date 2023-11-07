@@ -1,0 +1,25 @@
+.article{
+    margin: auto;
+    margin-top: 5px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+.article input{
+    font-size: 20px;
+    text-align: center;
+}
+
+.article label{
+    background-color: rgb(96, 88, 88);
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+.article button{
+    margin-top: 5px;
+    font-size: 20px;
+    cursor: pointer;
+}

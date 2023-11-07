@@ -21,17 +21,19 @@ class ProductController extends Controller
     $product->name = $request->input('name');
     $product->price = $request->input('price');
     $product->amount = $request->input('amount');
-    $product->photo = $request->input('photo');
+    $product->category_id = $request->input('category');
+    
+    $path = $request->file('photo')->getRealPath();
+    $logo = file_get_contents($path);
+    $base64 = base64_encode($logo);
+    $product->photo = $base64;
 
-    $product->category_id = 1;
+
 
     $product->save();
 
     return response()->json([
-        "name" => $product->name,
-        "price" => $product->price,
-        "amount" => $product->amount,
-        "photo" => $product->photo,
+        "artcle"=>"added"
     ]);
 }
 

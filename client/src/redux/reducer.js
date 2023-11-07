@@ -1,6 +1,7 @@
 const initialState = {
     cart: {},
     articles: [],
+    categories: [],
     admin:false,
   };
   
@@ -72,6 +73,12 @@ const initialState = {
           return {
             ...state,
             admin: action.admin,
+          };
+
+          case 'SET_CATEGORIES':
+          return {
+            ...state,
+            categories: action.categories,
           };
       default:
         return state;

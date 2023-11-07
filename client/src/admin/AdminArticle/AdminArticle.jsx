@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Divider from "@mui/joy/Divider";
 import {saveArticle} from "../../redux/actions"
 
+import styles from "./styles.module.css"
+
 export default function AdminArticle({article}) {
 
     const [name,setName] = useState(article.name)
@@ -14,7 +16,7 @@ export default function AdminArticle({article}) {
 
     return (
         <div key={article.id}>
-          <div>
+          <div className={styles.article}>
             <label htmlFor="name">Name</label>
             <input onChange={(e) => setName(e.target.value)} type='text' name='name' defaultValue={article.name}/>
 

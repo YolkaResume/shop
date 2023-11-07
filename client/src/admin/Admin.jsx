@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { useSelector, useDispatch } from "react-redux"; // Добавьте useDispatch
-import { adminLogin,loadArticles } from "../redux/actions";
+import { adminLogin,loadArticles,loadCategories } from "../redux/actions";
 import styles from "./styles.module.css";
 
 import Tabs from "@mui/joy/Tabs";
@@ -9,10 +9,12 @@ import Tab from "@mui/joy/Tab";
 import TabPanel from "@mui/joy/TabPanel";
 import ArticleTable from "./ArticleTable/ArticleTable";
 import AddArticle from "./AdminArticle/AddArticle";
+import Categories from "./Categories/Categories";
 
 export default function Admin() {
   const admin = useSelector((state) => state.admin);
   const articles = useSelector((state) => state.articles);
+  const categories = useSelector((state) => state.categories);
 
   // Состояние для хранения данных формы
   const [user, setUser] = useState({
@@ -33,6 +35,7 @@ export default function Admin() {
     // Используйте dispatch, чтобы отправить действие в Redux
     dispatch(adminLogin(user));
     dispatch(loadArticles());
+    dispatch(loadCategories());
   };
 
   return admin ? (
@@ -40,18 +43,18 @@ export default function Admin() {
       <div className={styles.Title}>Admin Panel</div>
       <Tabs aria-label="Basic tabs" defaultValue={0}>
         <TabList>
-          <Tab>Articles</Tab>
-          <Tab>Second tab</Tab>
-          <Tab>Third tab</Tab>
+          <Tab>Change Articles</Tab>
+          <Tab>Add Article</Tab>
+          <Tab>Categories</Tab>
         </TabList>
         <TabPanel value={0}>
           <ArticleTable articles={articles} />
         </TabPanel>
         <TabPanel value={1}>
-          <AddArticle article={{ name: "add", price: 0, amount: 0 }}></AddArticle>
+          <AddArticle article={{ name: "add", price: 0, amount: 0 }} categories={categories}></AddArticle>
         </TabPanel>
         <TabPanel value={2}>
-          <b>Third</b> tab panel
+          <Categories categories={categories}></Categories>
         </TabPanel>
       </Tabs>
     </div>
