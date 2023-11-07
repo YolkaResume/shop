@@ -1,6 +1,6 @@
-import { React, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { adminLogin, loadArticles } from "../redux/actions";
+import { React, useState } from "react";
+import { useSelector, useDispatch } from "react-redux"; // Добавьте useDispatch
+import { adminLogin,loadArticles } from "../redux/actions";
 import styles from "./styles.module.css";
 
 import Tabs from "@mui/joy/Tabs";
@@ -13,16 +13,27 @@ import AddArticle from "./AdminArticle/AddArticle";
 export default function Admin() {
   const admin = useSelector((state) => state.admin);
   const articles = useSelector((state) => state.articles);
-  const dispatch = useDispatch();
 
-  // Move the login function call to the useEffect hook
-  useEffect(() => {
-    if (!admin) {
-      // Only call login if the admin is not logged in
-      dispatch(adminLogin());
-    }
+  // Состояние для хранения данных формы
+  const [user, setUser] = useState({
+    username: "",
+    password: "",
+  });
+
+
+
+  const dispatch = useDispatch(); // Используйте useDispatch для доступа к диспетчеру
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setUser({ ...user, [name]: value });
+  };
+
+  const adminVer = () => {
+    // Используйте dispatch, чтобы отправить действие в Redux
+    dispatch(adminLogin(user));
     dispatch(loadArticles());
-  }, [dispatch, admin]);
+  };
 
   return admin ? (
     <div>
@@ -37,7 +48,7 @@ export default function Admin() {
           <ArticleTable articles={articles} />
         </TabPanel>
         <TabPanel value={1}>
-          <AddArticle article={{name:"add",price:0,amount:0}}></AddArticle>
+          <AddArticle article={{ name: "add", price: 0, amount: 0 }}></AddArticle>
         </TabPanel>
         <TabPanel value={2}>
           <b>Third</b> tab panel
@@ -45,6 +56,30 @@ export default function Admin() {
       </Tabs>
     </div>
   ) : (
-    <div>Login</div>
+    <div className={styles.loginFormContainer}>
+    <div className={styles.loginForm}>
+      <label htmlFor="username">Username</label>
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          value={user.username}
+          onChange={handleInputChange}
+        />
+        <label htmlFor="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={user.password}
+          onChange={handleInputChange}
+        />
+        <input
+          type="submit"
+          value={"Login"}
+          onClick={adminVer}
+        />
+    </div>
+    </div>
   );
 }

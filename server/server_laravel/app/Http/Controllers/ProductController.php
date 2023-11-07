@@ -4,7 +4,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Product; // Предполагается, что ваша модель называется Article
+use App\Models\Product;
 
 class ProductController extends Controller
 {
@@ -22,6 +22,7 @@ class ProductController extends Controller
     $product->price = $request->input('price');
     $product->amount = $request->input('amount');
     $product->photo = $request->input('photo');
+
     $product->category_id = 1;
 
     $product->save();

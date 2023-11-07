@@ -68,12 +68,11 @@ const initialState = {
           cart: updatedCartRemove,
           articles: updatedArticlesRemove,
         };
-  
-        case 'ADMIN_CHECK':
-          return{
+        case 'SET_ADMIN':
+          return {
             ...state,
-            admin:true,
-          }  
+            admin: action.admin,
+          };
       default:
         return state;
     }

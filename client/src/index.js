@@ -22,6 +22,7 @@ import Admin from './admin/Admin';
         path:"/admin",
         element:<Admin></Admin>
     }
+
   ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

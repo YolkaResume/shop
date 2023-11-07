@@ -44,7 +44,7 @@ export const addToCart = (article) => {
     formData.append('name', name);
     formData.append('price', price);
     formData.append('amount', amount);
-    formData.append('photo', photo);
+    formData.append('photo', photo);  // Directly append the file
   
     axios.post(`${phphost}/api/add/article`, formData, {
       headers: {
@@ -52,17 +52,29 @@ export const addToCart = (article) => {
       },
     }).then((response) => {
       console.log(response);
-    }).catch((error)=>{
-      console.log(error)
+    }).catch((error) => {
+      console.log(error);
     });
   }
+  
 
   export const updateArticles = (articles) => ({
     type: 'UPDATE_ARTICLES',
     articles,
   });
 
-  export const adminLogin = (user)=>({
-    type: 'ADMIN_CHECK',
-    user,
-  })
+  export const adminLogin = (user) => {
+    return (dispatch) => {
+      console.log(user);
+      axios.post(`${phphost}/api/login/admin`, user)
+        .then((response) => {
+          console.log(response);
+          const admin = response.data.success;
+          dispatch({ type: 'SET_ADMIN', admin });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }
+  
