@@ -2,8 +2,12 @@ import React, { useState } from 'react'
 import {addNewCategory} from "../../redux/actions"
 import Category from '../Category/Category'
 
+import {loadCategories} from "../../redux/actions"
+import { useDispatch } from "react-redux";
+
 export default function Categories({categories}) {
 
+    const dispatch = useDispatch();
     const [nameToAdd, setName] = useState() 
     const handleNameChange = (e) =>{
         setName(e.target.value);
@@ -12,6 +16,9 @@ export default function Categories({categories}) {
     const addCategory=()=>{
         console.log(nameToAdd)
         addNewCategory(nameToAdd)
+        setTimeout(() => {
+          dispatch(loadCategories());
+        }, 100);
     }
 
   return (
