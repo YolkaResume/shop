@@ -52,7 +52,7 @@ class ProductController extends Controller
     public function buy(Request $request)
     {
         $items = $request->input('items');
-    
+        $email = $request->input('email');
         foreach ($items as $item) {
             $productId = $item['id'];
             $quantityToSubtract = $item['quantity'];
@@ -82,7 +82,7 @@ class ProductController extends Controller
         }
     
         // Все товары успешно обновлены
-        $this->sendMail($request->input('email'),["message"=>"message text"]);
+        $this->sendMail($email,$items);
         return response()->json(['message' => 'Количество товаров успешно обновлено']);
 
     }

@@ -20,7 +20,6 @@ class OrderMailable extends Mailable
     {
         //
     }
-
     /**
      * Get the message envelope.
      */

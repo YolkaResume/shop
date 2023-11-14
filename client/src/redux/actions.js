@@ -16,8 +16,8 @@ export const addToCart = (article) => {
     };
   };
 
-  export const buyItems = (items) =>{
-    axios.post(`${phphost}/api/products/buy`, { items }).then((response)=>{
+  export const buyItems = (items,email) =>{
+    axios.post(`${phphost}/api/products/buy`, { items,email }).then((response)=>{
       console.log(response.data);
       
       

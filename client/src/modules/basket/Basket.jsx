@@ -16,7 +16,9 @@ export default function Basket() {
   const [isBasketOpen, setIsBasketOpen] = useState(false);
 
   const [email,setEmail] = useState();
-
+  const changeMail = (e)=>{
+    setEmail(e.target.value);
+  }
   const cartItems = Object.values(cart);
 
   const toggleBasket = () => {
@@ -24,7 +26,7 @@ export default function Basket() {
   };
 
   const buy = () =>{
-    buyItems(cartItems);
+    buyItems(cartItems,email);
     setTimeout(()=>{
       dispatch(loadArticles());
       dispatch(clearCart());
@@ -49,7 +51,7 @@ export default function Basket() {
             <></>
           ) : (
             <>
-            <input type="text"/>
+            <input onChange={changeMail} type="text"/>
             <Button
               sx={{
                 width: "100%",
