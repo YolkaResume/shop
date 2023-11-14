@@ -7,11 +7,9 @@ import Layout from './modules/layout/Layout';
 import ArticleList from './modules/articlelist/ArticleList';
 import { useEffect } from 'react';
 
-const articles = [
-];
+
 
 function App() {
-  const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
   const handleAddToCart = (article) => {
@@ -27,8 +25,8 @@ function App() {
   }, [dispatch]);
 
   return (
-    <Layout cart={cart}>
-      <ArticleList articles={articles} onAddToCart={handleAddToCart} onRemoveFromCart={handleRemoveFromCart} />
+    <Layout >
+      <ArticleList onAddToCart={handleAddToCart} onRemoveFromCart={handleRemoveFromCart} />
     </Layout>
   );
 }

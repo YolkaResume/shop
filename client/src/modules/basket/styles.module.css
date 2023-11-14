@@ -7,9 +7,7 @@
 }
 
 
-.buyBtn{
-  width: 100%;
-}
+
 .cartBtn{
   z-index: 4;
 }
@@ -28,3 +26,6 @@
     display: none;
   }
   
+  .list{
+    margin-top: 40px;
+  }

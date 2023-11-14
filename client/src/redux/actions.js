@@ -15,12 +15,28 @@ export const addToCart = (article) => {
       article,
     };
   };
+
+  export const buyItems = (items) =>{
+    axios.post(`${phphost}/api/products/buy`, { items }).then((response)=>{
+      console.log(response.data);
+      
+      
+    }).
+    catch((error)=>{
+      console.log(error)
+    })
+  }
+
+  export const clearCart = () => ({
+    type: 'CLEAR_CART',
+  });
   
   export const loadArticles = () => {
     return async (dispatch) => {
       try {
         const response = await axios.get(`${phphost}/api/products`);
         const articles = response.data;
+        console.log(articles)
         dispatch({ type: 'LOAD_ARTICLES', articles });
       } catch (error) {
         // Обработка ошибок, например, вывод ошибки в консоль или диспетч другого действия
@@ -41,7 +57,6 @@ export const addToCart = (article) => {
   };
 
   export const saveArticle = (name, price, amount) =>{
-      console.log(name,price,amount);
       axios.post(`${phphost}/api/save/article`, { name, price, amount }).
       then((response)=>{
         console.log(` ok?: ${response.data.ok}\n status: ${response.status}`)

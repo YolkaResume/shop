@@ -1,10 +1,21 @@
-import React, { useState } from 'react';
-import styles from './styles.module.css';
-import { useSelector } from 'react-redux';
+import React, { useState } from "react";
+import styles from "./styles.module.css";
+import { useSelector, useDispatch } from 'react-redux';
+import Button from "@mui/joy/Button";
+
+import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+
+import {buyItems,loadArticles,clearCart } from "../../redux/actions"
 
 export default function Basket() {
+
+  const dispatch = useDispatch()
+
   const cart = useSelector((state) => state.cart);
   const [isBasketOpen, setIsBasketOpen] = useState(false);
+
+  const [email,setEmail] = useState();
 
   const cartItems = Object.values(cart);
 
@@ -12,26 +23,44 @@ export default function Basket() {
     setIsBasketOpen(!isBasketOpen);
   };
 
+  const buy = () =>{
+    buyItems(cartItems);
+    setTimeout(()=>{
+      dispatch(loadArticles());
+      dispatch(clearCart());
+    },350)
+    
+  }
+
   return (
     <div className={styles.menu}>
-      <button className={styles.cartBtn} onClick={toggleBasket}>Корзина</button>
+      <Button color="success" className={styles.cartBtn} onClick={toggleBasket}>
+        <ShoppingCartIcon />
+      </Button>
       <div className={isBasketOpen ? styles.basketOpen : styles.basketClosed}>
-        <h2>Your Cart</h2>
-        <ul>
+        <ul className={styles.list}>
           {cartItems.map((cartItem) => (
             <li key={cartItem.id}>
-              {cartItem.name} - Quantity: {cartItem.quantity} - Price: {cartItem.price * cartItem.quantity}$
+              {cartItem.name} - Quantity: {cartItem.quantity} - Price:{" "}
+              {cartItem.price * cartItem.quantity}$
             </li>
           ))}
-          {cartItems.length < 1 ?
-            <></>:
-            <button className={styles.buyBtn}>
-            BUY
-          </button>
-          }
-          
+          {cartItems.length < 1 ? (
+            <></>
+          ) : (
+            <>
+            <input type="text"/>
+            <Button
+              sx={{
+                width: "100%",
+              }}
+              onClick={buy}
+            >
+              <ShoppingCartCheckoutIcon />
+            </Button>
+            </>
+          )}
         </ul>
-        
       </div>
     </div>
   );

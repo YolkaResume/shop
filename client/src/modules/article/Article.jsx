@@ -2,6 +2,10 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './styles.module.css';
 import { addToCart, removeFromCart } from '../../redux/actions';
+import Button from '@mui/joy/Button';
+
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 
 export default function Article({ article }) {
   const dispatch = useDispatch();
@@ -23,9 +27,9 @@ export default function Article({ article }) {
       <span className={styles.title}>{article.name}</span>
       <span className={styles.title}>{articlesItem.quantity ? articlesItem.quantity : 0}</span>
       <div className={styles.buttons}>
-        <button onClick={toCart}>+</button>
+        <Button onClick={toCart}><AddShoppingCartIcon/></Button>
         {article.price}$
-        <button onClick={fromCart}>-</button>
+        <Button onClick={fromCart}><RemoveShoppingCartIcon/></Button>
       </div>
     </div>
   );

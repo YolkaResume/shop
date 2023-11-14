@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Divider from "@mui/joy/Divider";
+import {Divider,Button} from "@mui/joy";
 import { addArticle } from "../../redux/actions";
 
 import styles from "./styles.module.css"
@@ -68,7 +68,7 @@ export default function AddArticle({ article, categories }) {
           onChange={handlePhotoChange}
         />
 
-        <button type="submit">Add</button>
+        <Button type="submit">Add</Button>
       </div>
 
       <Divider

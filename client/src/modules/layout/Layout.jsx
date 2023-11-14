@@ -2,16 +2,20 @@ import React from 'react';
 import styles from "./styles.module.css";
 import Basket from '../basket/Basket';
 
-export default function Layout({ children, cart }) {
+import StoreIcon from '@mui/icons-material/Store';
+
+export default function Layout({ children }) {
   return (
     <>
       <header className={styles.header}>
-        <span>Наш интернет магазин</span>
-        <Basket cart={cart} />
+        <span>
+          <StoreIcon/>
+          ImageHub</span>
+        <Basket />
       </header>
       {children}
       <footer>
-        <span>Все права защищены &copy;</span>
+        <span>All rights copyrited &copy;</span>
       </footer>
     </>
   );

@@ -3,6 +3,7 @@ import Divider from "@mui/joy/Divider";
 import {saveArticle} from "../../redux/actions"
 
 import styles from "./styles.module.css"
+import Button from '@mui/joy/Button';
 
 export default function AdminArticle({article}) {
 
@@ -26,7 +27,7 @@ export default function AdminArticle({article}) {
             <label htmlFor="amount">Amount</label>
             <input onChange={(e) => setAmount(e.target.value)} type='number' name='amount' defaultValue={article.amount}/>
 
-            <button onClick={save}>Save</button>
+            <Button onClick={save}>Save</Button>
           </div>
 
           <Divider

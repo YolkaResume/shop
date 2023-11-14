@@ -69,6 +69,13 @@ const initialState = {
           cart: updatedCartRemove,
           articles: updatedArticlesRemove,
         };
+
+        case 'CLEAR_CART':
+  return {
+    ...state,
+    cart: {},
+  };
+
         case 'SET_ADMIN':
           return {
             ...state,
