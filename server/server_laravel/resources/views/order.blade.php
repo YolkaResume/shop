@@ -43,5 +43,5 @@ background-color: #f0f0f0;">
         @endforeach
     </tbody>
 </table>
-
+<p>Adress: {{$adress}}</p>
 <p>Total Paycheck: {{ $paycheck }}</p>

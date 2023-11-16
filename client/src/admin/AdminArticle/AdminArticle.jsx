@@ -10,9 +10,9 @@ export default function AdminArticle({article}) {
     const [name,setName] = useState(article.name)
     const [price,setPrice] = useState(article.price)
     const [amount,setAmount] = useState(article.amount)
-
+    const id = article.id;
     const save = ()=>{
-        saveArticle(name,price,amount)
+        saveArticle(name,price,amount,id)
     }
 
     return (

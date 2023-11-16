@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "./styles.module.css";
-import Basket from '../basket/Basket';
+import Cart from '../cart/Cart';
 
 import StoreIcon from '@mui/icons-material/Store';
 
@@ -11,7 +11,7 @@ export default function Layout({ children }) {
         <span>
           <StoreIcon/>
           ImageHub</span>
-        <Basket />
+        <Cart />
       </header>
       {children}
       <footer>

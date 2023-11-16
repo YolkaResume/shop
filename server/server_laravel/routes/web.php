@@ -23,5 +23,6 @@ Route::get('/api/products', [ProductController::class,'index']);
 Route::post('/api/products/buy', [ProductController::class,'buy']);
 Route::get('/api/categories', [CategoryController::class,'index']);
 Route::post('/api/add/article', [ProductController::class,'add']);
+Route::post('/api/save/article', [ProductController::class,'save']);
 Route::post('/api/add/category', [CategoryController::class,'add']);
 Route::post('/api/login/admin', [AdminController::class,'login']);
