@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Divider,Button} from "@mui/joy";
+import {Button, Box} from "@mui/joy";
 import { addArticle } from "../../redux/actions";
 
 import styles from "./styles.module.css"
@@ -29,7 +29,7 @@ export default function AddArticle({ article, categories }) {
 
   return (
     <form key={article.id} onSubmit={handleAdd}>
-      <div className={styles.article}>
+      <Box className={styles.article}>
         <label htmlFor="name">Name</label>
         <input
           onChange={(e) => setName(e.target.value)}
@@ -69,16 +69,16 @@ export default function AddArticle({ article, categories }) {
         />
 
         <Button type="submit">Add</Button>
-      </div>
+      </Box>
 
-      <Divider
+      <Box
         sx={{
           height: "2px",
           width: "100%",
           marginTop: "10px",
           background: "#222",
         }}
-      ></Divider>
+      ></Box>
     </form>
   );
 }

@@ -10,6 +10,7 @@ import TabPanel from "@mui/joy/TabPanel";
 import ArticleTable from "./ArticleTable/ArticleTable";
 import AddArticle from "./AdminArticle/AddArticle";
 import Categories from "./Categories/Categories";
+import { Box } from "@mui/joy";
 
 export default function Admin() {
   const admin = useSelector((state) => state.admin);
@@ -39,8 +40,8 @@ export default function Admin() {
   };
 
   return admin ? (
-    <div>
-      <div className={styles.Title}>Admin Panel</div>
+    <Box>
+      <Box className={styles.Title}>Admin Panel</Box>
       <Tabs aria-label="Basic tabs" defaultValue={0}>
         <TabList>
           <Tab>Change Articles</Tab>
@@ -57,10 +58,10 @@ export default function Admin() {
           <Categories categories={categories}></Categories>
         </TabPanel>
       </Tabs>
-    </div>
+    </Box>
   ) : (
-    <div className={styles.loginFormContainer}>
-    <div className={styles.loginForm}>
+    <Box className={styles.loginFormContainer}>
+    <Box className={styles.loginForm}>
       <label htmlFor="username">Username</label>
         <input
           type="text"
@@ -82,7 +83,7 @@ export default function Admin() {
           value={"Login"}
           onClick={adminVer}
         />
-    </div>
-    </div>
+    </Box>
+    </Box>
   );
 }

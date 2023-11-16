@@ -7,6 +7,7 @@ import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 import { useNavigate } from 'react-router-dom';
+import { Box } from '@mui/joy';
 
 export default function Cart() {
 
@@ -25,11 +26,11 @@ export default function Cart() {
   
 
   return (
-    <div className={styles.menu}>
+    <Box className={styles.menu}>
       <Button color="success" className={styles.cartBtn} onClick={toggleBasket}>
         <ShoppingCartIcon />
       </Button>
-      <div className={isBasketOpen ? styles.basketOpen : styles.basketClosed}>
+      <Box className={isBasketOpen ? styles.basketOpen : styles.basketClosed}>
         <ul className={styles.list}>
           {cartItems.map((cartItem) => (
             <li key={cartItem.id}>
@@ -51,7 +52,7 @@ export default function Cart() {
             </>
           )}
         </ul>
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }

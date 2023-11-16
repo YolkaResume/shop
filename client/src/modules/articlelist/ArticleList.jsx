@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useSelector } from 'react-redux';
 
 import SortIcon from '@mui/icons-material/Sort';
+import { Box } from "@mui/joy";
 
 function ArticleList() {
   const articles = useSelector((state) => state.articles);
@@ -31,20 +32,20 @@ function ArticleList() {
 
   return (
     <>
-    <div className={styles.selector}>
+    <Box className={styles.selector}>
           <SortIcon></SortIcon>
           <select className={styles.select} value={sortType} onChange={(e) => handleSortChange(e.target.value)}>
             <option className={styles.option} value="price">Цена</option>
             <option className={styles.option} value="quantity">Количество</option>
             <option className={styles.option} value="category">Категория</option>
           </select>
-      </div>
-    <div className={styles.list}>
+      </Box>
+    <Box className={styles.list}>
       
       {sortedArticles.map((article) => {
         return <Article key={article.id} article={article} />;
       })}
-    </div>
+    </Box>
     </>
   );
 }

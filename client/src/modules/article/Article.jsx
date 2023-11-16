@@ -6,6 +6,7 @@ import Button from "@mui/joy/Button";
 
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
+import { Box } from "@mui/joy";
 
 export default function Article({ article }) {
   const dispatch = useDispatch();
@@ -22,13 +23,13 @@ export default function Article({ article }) {
   };
 
   return article.amount > 0 ? (
-    <div className={styles.article}>
+    <Box className={styles.article}>
       <img src={`data:image/jpeg;base64,${article.photo}`} alt="Article" />
       <span className={styles.title}>{article.name}</span>
       <span className={styles.title}>
         {articlesItem.quantity ? articlesItem.quantity : 0}
       </span>
-      <div className={styles.buttons}>
+      <Box className={styles.buttons}>
         <Button onClick={toCart}>
           <AddShoppingCartIcon />
         </Button>
@@ -36,13 +37,13 @@ export default function Article({ article }) {
         <Button onClick={fromCart}>
           <RemoveShoppingCartIcon />
         </Button>
-      </div>
-    </div>
+      </Box>
+    </Box>
   ) : (
-    <div className={styles.article}>
+    <Box className={styles.article}>
       <img src={`data:image/jpeg;base64,${article.photo}`} alt="Article" />
       <span className={styles.title}>{article.name}</span>
       <span>No more products in the store</span>
-    </div>
+    </Box>
   );
 }

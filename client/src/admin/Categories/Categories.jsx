@@ -4,6 +4,7 @@ import Category from '../Category/Category'
 
 import {loadCategories} from "../../redux/actions"
 import { useDispatch } from "react-redux";
+import { Box } from '@mui/joy';
 
 export default function Categories({categories}) {
 
@@ -22,17 +23,17 @@ export default function Categories({categories}) {
     }
 
   return (
-    <div>
+    <Box>
       {categories.map((category)=>{
         return(
             <Category key={category.id} category={category}></Category>
         )
       })}
-      <div>
+      <Box>
         add category
         <input onChange={handleNameChange} type='text'></input>
         <button onClick={addCategory}>add</button>
-      </div>
-    </div>
+      </Box>
+    </Box>
   )
 }
