@@ -100,10 +100,8 @@ export const addToCart = (article) => {
 
   export const adminLogin = (user) => {
     return (dispatch) => {
-      console.log(user);
       axios.post(`${phphost}/api/login/admin`, user)
         .then((response) => {
-          console.log(response);
           const admin = response.data.success;
           dispatch({ type: 'SET_ADMIN', admin });
         })
