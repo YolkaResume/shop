@@ -52,7 +52,7 @@ export default function Admin() {
           <ArticleTable articles={articles} />
         </TabPanel>
         <TabPanel value={1}>
-          <AddArticle article={{ name: "add", price: 0, amount: 0 }} categories={categories}></AddArticle>
+          <AddArticle article={{ name: "new article", price: 0, amount: 0 }} categories={categories}></AddArticle>
         </TabPanel>
         <TabPanel value={2}>
           <Categories categories={categories}></Categories>

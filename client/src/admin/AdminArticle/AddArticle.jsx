@@ -13,7 +13,6 @@ export default function AddArticle({ article, categories }) {
 
   const handleAdd = (e) => {
     e.preventDefault(); // Остановить стандартное поведение формы
-    console.log(name, price, amount, photo, categoryID);
     addArticle(name, price, amount, photo, categoryID);
   }
 
